@@ -27,7 +27,10 @@ matrix:
       jdk: oraclejdk8
       sudo: required
       group: deprecated-2017Q4
-      language: java
+      language: node_js
+      node_js:
+        - "node"
+        - "8"
       env:
         - TESTENV=default
         - TEST_COMMAND=jasmineTest
