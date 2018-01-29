@@ -176,10 +176,8 @@ install:
 - if [ "$TESTENV" = "keystone,default" ]; then ./scripts/keystone/configure-manifest.sh; fi
 - mkdir -p $HOME/build/cloudfoundry/uaa/uaa/build/reports/tests
 - sudo apt-get -qy install lsof
-- if [ "$TEST_COMMAND" = "jasmineTest" ]; then
-    nvm install node;
-    nvm use node;
-  fi
+- nvm install node
+- nvm use node
 script:
 - sudo lsof -i :33389 || echo "Nothing listening on port 33389"
 - sudo lsof -i :33636 || echo "Nothing listening on port 33636"
