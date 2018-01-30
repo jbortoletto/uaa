@@ -226,8 +226,9 @@ public class UaaAuthorizationEndpoint extends AbstractEndpoint {
             sessionStatus.setComplete();
 
             if ("none".equals(authorizationRequest.getRequestParameters().get("prompt"))) {
+                logger.debug("An unexpected error occurred during silent authentication: " + e.getMessage(), e);
                 return new ModelAndView(
-                  new RedirectView(UaaUrlUtils.addFragmentComponent(resolvedRedirect, "error=internal_server_error"))
+                  new RedirectView(UaaUrlUtils.addFragmentComponent(resolvedRedirect, "error=internal_server_error&msg=" + e.getMessage()))
                 );
             }
 
